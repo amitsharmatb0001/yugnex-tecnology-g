@@ -24,8 +24,8 @@ class Settings(BaseSettings):
     FRONTEND_URL: str = "http://localhost:5173"
     
     # Database (PostgreSQL)
-    # FIX: Updated default to use asyncpg
-    DATABASE_URL: str = "postgresql+asyncpg://postgres:diGpKGXOnnhLOTzqDuyAymPYwodNbgKT@yamabiko.proxy.rlwy.net:49972/railway"
+    # IMPORTANT: Set DATABASE_URL in .env file - never commit credentials to git!
+    DATABASE_URL: str = "postgresql+asyncpg://user:password@localhost:5432/yugnex_db"
     
     # Database (Redis)
     REDIS_URL: str = "redis://localhost:6379/0"
