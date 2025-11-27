@@ -1,0 +1,147 @@
+# =============================================================================
+# FILE: backend/requirements.txt
+# PURPOSE: Python dependencies for YugNex v1.0 backend
+# =============================================================================
+# 
+# HOW TO USE:
+#   1. Create a virtual environment: python -m venv venv
+#   2. Activate it: source venv/bin/activate (Linux/Mac) or venv\Scripts\activate (Windows)
+#   3. Install: pip install -r requirements.txt
+#
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# WEB FRAMEWORK & SERVER
+# -----------------------------------------------------------------------------
+# FastAPI: Modern, fast web framework for building APIs
+# - Automatic OpenAPI docs at /docs
+# - Type hints for validation
+# - Async support out of the box
+fastapi==0.109.0
+
+# Uvicorn: ASGI server to run FastAPI
+# - [standard] includes uvloop for better performance
+uvicorn[standard]==0.27.0
+
+# For handling file uploads and form data
+python-multipart==0.0.6
+
+# -----------------------------------------------------------------------------
+# DATABASE
+# -----------------------------------------------------------------------------
+# SQLAlchemy 2.0: ORM (Object Relational Mapper)
+# - Maps Python classes to database tables
+# - Handles all SQL operations
+sqlalchemy>=2.0.36
+
+# PostgreSQL async driver for Python
+# - asyncpg: High-performance async PostgreSQL client
+# - Works well with SQLAlchemy 2.0 async engine
+asyncpg==0.30.0
+
+# PostgreSQL sync driver (required for Alembic migrations)
+psycopg2-binary>=2.9.9
+
+# Alembic: Database migration tool
+# - Tracks schema changes over time
+# - Allows rollback of database changes
+alembic==1.13.1
+
+# -----------------------------------------------------------------------------
+# AUTHENTICATION & SECURITY
+# -----------------------------------------------------------------------------
+# python-jose: JWT (JSON Web Token) handling
+# - [cryptography] adds secure algorithms
+# - Used for user authentication tokens
+python-jose[cryptography]==3.3.0
+
+# Passlib: Password hashing library
+# - [bcrypt] is the recommended algorithm
+# - Secure password storage (never store plain text!)
+passlib[bcrypt]==1.7.4
+
+# Bcrypt: Password hashing algorithm
+# - Used by Passlib for secure password hashing
+# - Version 4.x required by chromadb, using direct bcrypt calls for compatibility
+bcrypt>=4.0.1
+
+# -----------------------------------------------------------------------------
+# AI MODEL INTEGRATION
+# -----------------------------------------------------------------------------
+# Anthropic SDK: Official Claude API client
+# - Used for complex reasoning tasks
+# - Primary AI model for YugNex
+anthropic>=0.34.0
+langchain-anthropic>=0.3.0
+
+# Google Generative AI: Official Gemini API client
+# - Used for fast responses and simple tasks
+# - Equal partner to Claude (not fallback!)
+google-generativeai>=0.4.0
+
+# LangChain: Framework for AI applications
+# - Provides abstractions for prompts, chains, memory
+# - Makes switching between models easier
+langchain>=0.3.0
+langchain-anthropic>=0.3.0
+langchain-google-genai>=2.0.0
+
+# Google Cloud Vertex AI: Unified SDK for Gemini on GCP
+# - Used for deploying and managing models on Google Cloud
+google-cloud-aiplatform>=1.38.0
+langchain-google-vertexai>=2.0.0
+
+# -----------------------------------------------------------------------------
+# DATA VALIDATION & CONFIGURATION
+# -----------------------------------------------------------------------------
+# Pydantic: Data validation using Python type hints
+# - Validates request/response data automatically
+# - Powers FastAPI's type checking
+pydantic>=2.6.0
+
+# Email-validator: Required for Pydantic EmailStr validation
+# - Validates email addresses in Pydantic models
+email-validator>=2.0.0
+
+# Pydantic Settings: Environment variable management
+# - Loads config from .env files
+# - Type-safe configuration
+pydantic-settings>=2.1.0
+
+# Python-dotenv: Load .env files
+# - Keeps secrets out of code
+python-dotenv>=1.0.1
+
+# -----------------------------------------------------------------------------
+# ASYNC & HTTP
+# -----------------------------------------------------------------------------
+# HTTPX: Async HTTP client
+# - Used for making API calls to Claude/Gemini
+# - Modern replacement for requests
+httpx>=0.26.0
+
+# Aiofiles: Async file operations
+# - Non-blocking file reads/writes
+aiofiles>=23.2.1
+
+# -----------------------------------------------------------------------------
+# TESTING
+# -----------------------------------------------------------------------------
+# Pytest: Testing framework
+# - Simple and powerful
+pytest>=8.0.0
+
+# Pytest-asyncio: Async test support
+# - Test async functions properly
+pytest-asyncio>=0.23.4
+
+# -----------------------------------------------------------------------------
+# DEVELOPMENT TOOLS
+# -----------------------------------------------------------------------------
+# Black: Code formatter
+# - Consistent code style
+black>=24.1.1
+
+# Isort: Import sorter
+# - Organizes imports alphabetically
+isort>=5.13.2
